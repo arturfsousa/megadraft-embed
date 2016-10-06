@@ -24,11 +24,11 @@ export default class Block extends Component {
     ];
 
     this.state = {
-      url: '',
+      url: "",
       form: {
-        url: ''
+        url: ""
       }
-    }
+    };
   }
 
   _handleEdit() {
@@ -68,9 +68,9 @@ export default class Block extends Component {
 
         <BlockData>
           <BlockInput
-            placeholder='URL'
+            placeholder="URL"
             value={(this.state.url) ? this.state.url : null}
-            onChange={this._onChangeForm.bind(this, 'url')} />
+            onChange={this._onChangeForm.bind(this, "url")} />
         </BlockData>
 
         <BlockData>
