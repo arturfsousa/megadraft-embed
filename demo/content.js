@@ -26,7 +26,7 @@ export default {
       text: "",
       data: {
         type: constants.PLUGIN_TYPE,
-        caption: "Plugin caption"
+        url: ""
       },
       entityRanges: []
     }

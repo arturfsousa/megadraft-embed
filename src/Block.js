@@ -16,35 +16,65 @@ export default class Block extends Component {
   constructor(props) {
     super(props);
 
-    this._handleCaptionChange = ::this._handleCaptionChange;
     this._handleEdit = ::this._handleEdit;
 
     this.actions = [
       {"key": "edit", "icon": MegadraftIcons.EditIcon, "action": this._handleEdit},
       {"key": "delete", "icon": MegadraftIcons.DeleteIcon, "action": this.props.container.remove}
     ];
+
+    this.state = {
+      url: '',
+      form: {
+        url: ''
+      }
+    }
   }
 
   _handleEdit() {
     alert(JSON.stringify(this.props.data, null, 4));
   }
 
-  _handleCaptionChange(event) {
-    this.props.container.updateEntity({caption: event.target.value});
+  _onChangeForm(field, e) {
+    let form = this.state.form;
+    form[field] = e.target.value;
+
+    this.setState({ form: form });
+  }
+
+  _embed(e) {
+    this.setState({
+      url: this.state.form.url
+    });
+  }
+
+  _renderEmbed() {
+    if (this.state.url) {
+      return (
+        <iframe
+          src={this.state.url}
+          width="560"
+          height="315"></iframe>
+      );
+    }
   }
 
   render(){
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          <pre>{this.props.data.caption || "- NO TEXT -"}</pre>
+          {this._renderEmbed()}
         </BlockContent>
 
         <BlockData>
           <BlockInput
-            placeholder="Caption"
-            value={this.props.data.caption}
-            onChange={this._handleCaptionChange} />
+            placeholder='URL'
+            value={(this.state.url) ? this.state.url : null}
+            onChange={this._onChangeForm.bind(this, 'url')} />
+        </BlockData>
+
+        <BlockData>
+          <button onClick={this._embed.bind(this)}>Add</button>
         </BlockData>
       </CommonBlock>
     );
