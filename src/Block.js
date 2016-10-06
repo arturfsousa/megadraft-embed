@@ -8,6 +8,7 @@ import React, {Component} from "react";
 
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 
+import Button from "components/Button";
 
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
@@ -74,7 +75,7 @@ export default class Block extends Component {
         </BlockData>
 
         <BlockData>
-          <button onClick={this._embed.bind(this)}>Add</button>
+          <Button onClick={this._embed.bind(this)} label="Search" />
         </BlockData>
       </CommonBlock>
     );
