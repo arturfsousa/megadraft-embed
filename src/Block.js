@@ -84,7 +84,22 @@ export default class Block extends Component {
   }
 
   _handleEdit() {
-    alert(JSON.stringify(this.props.data, null, 4));
+    let data = this._getPluginData();
+    alert(JSON.stringify(data, null, 4));
+  }
+
+  _getPluginData() {
+    let data = {
+      sourceType: null,
+      url: null
+    };
+
+    if (this.state.url) {
+      data.url = this.state.url;
+      data.sourceType = this.state.sourceType;
+    }
+
+    return data;
   }
 
   _onChangeForm(field, e) {
