@@ -78,6 +78,8 @@
     transition: all ease-in-out .20s; }
   .md-embed-icon--selected {
     border: 1px dashed #999; }
+  .md-embed-icon--map:before {
+    content: "\e905"; }
   .md-embed-icon--facebook:before {
     content: "\e900"; }
   .md-embed-icon--instagram:before {

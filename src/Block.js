@@ -30,7 +30,8 @@ export default class Block extends Component {
       "instagram",
       "twitter",
       "youtube",
-      "playbuzz"
+      "playbuzz",
+      "map"
     ];
 
     this.state = {
@@ -136,6 +137,8 @@ export default class Block extends Component {
         return this._renderInstagram();
       case "twitter":
         return this._renderTwitter();
+      case "map":
+        return this._renderMap();
     }
   }
 
@@ -186,6 +189,14 @@ export default class Block extends Component {
     return (
       <div className="md-embed__media">
         <div id={`twit-${this.state.twitId}`}></div>
+      </div>
+    );
+  }
+
+  _renderMap() {
+    return (
+      <div className="md-embed__media">
+        <iframe src="http://www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK&zoom=17"></iframe>
       </div>
     );
   }

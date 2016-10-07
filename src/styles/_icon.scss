@@ -32,6 +32,9 @@
     border: 1px dashed $color-gray;
   }
 
+  &--map:before {
+    content: "\e905";
+  }
   &--facebook:before {
     content: "\e900";
   }
