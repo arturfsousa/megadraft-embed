@@ -15,3 +15,14 @@
        url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.ttf') format('truetype'),
        url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.svg#opensans-bold-webfont') format('svg');
 }
+
+@font-face {
+  font-family: 'embed';
+  src: url('fonts/embed.eot?37xcim');
+  src: url('fonts/embed.eot?37xcim#iefix') format('embedded-opentype'),
+       url('fonts/embed.ttf?37xcim') format('truetype'),
+       url('fonts/embed.woff?37xcim') format('woff'),
+       url('fonts/embed.svg?37xcim#embed') format('svg');
+       font-weight: normal;
+       font-style: normal;
+}
