@@ -76,14 +76,23 @@ export default class Block extends Component {
   }
 
   _renderEmbed() {
-    if (this.state.url) {
-      return (
-        <iframe
-          src={this.state.url}
-          width="100%"
-          height="400"></iframe>
-      );
+    if (!this.state.url) {
+      return null;
     }
+
+    switch (this.state.souceType) {
+      case "youtube":
+        return this._renderYoutube();
+    }
+  }
+
+  _renderYoutube() {
+    return (
+      <div className="md-embed__media">
+        <iframe className="md-embed__media__iframe"
+          src={this.state.url}></iframe>
+      </div>
+    );
   }
 
   render(){
