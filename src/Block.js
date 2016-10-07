@@ -23,8 +23,16 @@ export default class Block extends Component {
     this._handleEdit = ::this._handleEdit;
 
     this.actions = [
-      {"key": "edit", "icon": MegadraftIcons.EditIcon, "action": this._handleEdit},
-      {"key": "delete", "icon": MegadraftIcons.DeleteIcon, "action": this.props.container.remove}
+      {
+        "key": "edit",
+        "icon": MegadraftIcons.EditIcon,
+        "action": this._handleEdit
+      },
+      {
+        "key": "delete",
+        "icon": MegadraftIcons.DeleteIcon,
+        "action": this.props.container.remove
+      }
     ];
 
     this.sources = [
@@ -75,7 +83,9 @@ export default class Block extends Component {
       if (this.state.twitId && prevState.twitId != this.state.twitId) {
         window.twttr.widgets.createTweet(
           this.state.twitId,
-          document.getElementById(`twit-${this.state.twitId}`)
+          document.getElementById(`twit-${this.state.twitId}`), {
+            align: "center"
+          }
         );
       }  else if (document.getElementById(`twit-${this.state.twitId}`)) {
         document.getElementById(`twit-${this.state.twitId}`).innerHTML = "";
@@ -238,7 +248,8 @@ export default class Block extends Component {
   _renderMap() {
     return (
       <div className="md-embed__media">
-        <iframe src="http://www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK&zoom=17&key=AIzaSyCQNjrqDS3NHGmQJGHmTH39qWkuTwAZV48"></iframe>
+        <iframe className="md-embed__media__iframe"
+          src={this.state.url}></iframe>
       </div>
     );
   }
