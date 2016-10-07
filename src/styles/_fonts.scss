@@ -1,0 +1,17 @@
+@font-face{
+  font-family: $font-default;
+  src: url('//s.glbimg.com/gl/ba/fonts/opensans-regular-webfont.eot');
+  src: url('//s.glbimg.com/gl/ba/fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-regular-webfont.woff') format('woff'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-regular-webfont.ttf') format('truetype'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-regular-webfont.svg#opensans-regular-webfont') format('svg');
+}
+
+@font-face{
+  font-family: $font-default-bold;
+  src: url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.eot');
+  src: url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.woff') format('woff'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.ttf') format('truetype'),
+       url('//s.glbimg.com/gl/ba/fonts/opensans-bold-webfont.svg#opensans-bold-webfont') format('svg');
+}

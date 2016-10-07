@@ -1,0 +1,1 @@
+- Add gulp-util to the packages json in the yo-megadraft-plugin.

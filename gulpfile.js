@@ -30,7 +30,7 @@ gulp.task("demo-sass", function () {
 });
 
 gulp.task("demo-watch", function () {
-  gulp.watch("./src/sass/**/*.scss", ["demo-sass"]);
+  gulp.watch("./src/styles/**/*.scss", ["demo-sass", "sass"]);
   gulp.watch("./demo/main.scss", ["demo-sass"]);
 });
 
@@ -50,4 +50,3 @@ gulp.task("dev-server", function (callback) {
     }
   });
 });
-

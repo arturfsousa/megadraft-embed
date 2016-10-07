@@ -8,7 +8,7 @@ export default class Button extends Component {
 
   render() {
     return (
-      <button className={this.props.className} type="button" onClick={this.props.onClick}>
+      <button className="mg-embed-button mg-embed-button--blue  mg-embed-button--small" type="button" onClick={this.props.onClick}>
         {this.props.label}
       </button>
     );
