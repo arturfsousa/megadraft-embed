@@ -72,6 +72,10 @@
     color: white;
     -webkit-transition: all ease-in-out .20s;
     transition: all ease-in-out .20s; }
+  .md-embed-icon:active {
+    background-color: #0669de;
+    -webkit-transition: all ease-in-out .20s;
+    transition: all ease-in-out .20s; }
   .md-embed-icon--selected {
     border: 1px dashed #666; }
   .md-embed-icon--facebook:before {

@@ -23,6 +23,11 @@
     transition: all ease-in-out .20s;
   }
 
+  &:active {
+    background-color: $color-blue;
+    transition: all ease-in-out .20s;
+  }
+
   &--selected {
     border: 1px dashed #666;
   }
