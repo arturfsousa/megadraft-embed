@@ -25,8 +25,17 @@ export default class Block extends Component {
       {"key": "delete", "icon": MegadraftIcons.DeleteIcon, "action": this.props.container.remove}
     ];
 
+    this.sources = [
+      "facebook",
+      "instagram",
+      "twitter",
+      "youtube",
+      "playbuzz"
+    ];
+
     this.state = {
       url: "",
+      souceType: "facebook",
       form: {
         url: ""
       }
@@ -44,9 +53,25 @@ export default class Block extends Component {
     this.setState({ form: form });
   }
 
+  _setSourceType(souceType, e) {
+    this.setState({ souceType: souceType });
+  }
+
   _embed(e) {
     this.setState({
       url: this.state.form.url
+    });
+  }
+
+  _renderSources() {
+    return this.sources.map((sourceType, index) => {
+      return (
+        <Icon
+          key={index}
+          type={sourceType}
+          onClick={this._setSourceType.bind(this, sourceType)}
+          active={sourceType === this.state.souceType} />
+      );
     });
   }
 
@@ -65,11 +90,7 @@ export default class Block extends Component {
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockData>
-          <Icon type="facebook" />
-          <Icon type="instagram" />
-          <Icon type="twitter" />
-          <Icon type="youtube" />
-          <Icon type="playbuzz" />
+          {this._renderSources()}
         </BlockData>
 
         <BlockData>

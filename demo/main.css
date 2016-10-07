@@ -59,17 +59,21 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  border-radius: 4px;
+  border: 1px solid transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 10px;
+  padding: 4px;
+  margin-right: 8px;
   font-size: 20px;
   cursor: pointer; }
   .md-embed-icon:hover {
     background-color: #666;
     color: white;
     -webkit-transition: all ease-in-out .20s;
-    transition: all ease-in-out .20s;
-    border-radius: 4px; }
+    transition: all ease-in-out .20s; }
+  .md-embed-icon--selected {
+    border: 1px dashed #666; }
   .md-embed-icon--facebook:before {
     content: "\e900"; }
   .md-embed-icon--instagram:before {
