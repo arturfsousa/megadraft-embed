@@ -9,6 +9,7 @@ import React, {Component} from "react";
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 
 import Button from "components/Button";
+import Icon from "components/Icon";
 
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
@@ -54,8 +55,8 @@ export default class Block extends Component {
       return (
         <iframe
           src={this.state.url}
-          width="560"
-          height="315"></iframe>
+          width="100%"
+          height="400"></iframe>
       );
     }
   }
@@ -63,9 +64,13 @@ export default class Block extends Component {
   render(){
     return (
       <CommonBlock {...this.props} actions={this.actions}>
-        <BlockContent>
-          {this._renderEmbed()}
-        </BlockContent>
+        <BlockData>
+          <Icon type="facebook" />
+          <Icon type="instagram" />
+          <Icon type="twitter" />
+          <Icon type="youtube" />
+          <Icon type="playbuzz" />
+        </BlockData>
 
         <BlockData>
           <BlockInput
@@ -75,8 +80,12 @@ export default class Block extends Component {
         </BlockData>
 
         <BlockData>
-          <Button onClick={this._embed.bind(this)} label="Search" />
+          <Button onClick={this._embed.bind(this)} label="Embed" />
         </BlockData>
+
+        <BlockContent className="embed">
+          {this._renderEmbed()}
+        </BlockContent>
       </CommonBlock>
     );
   }
