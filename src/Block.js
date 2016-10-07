@@ -36,6 +36,7 @@ export default class Block extends Component {
     this.state = {
       url: "",
       sourceType: "facebook",
+      twitId: null,
       form: {
         url: ""
       }
@@ -65,6 +66,13 @@ export default class Block extends Component {
         window.FB.XFBML.parse();
       }
     }
+
+    if (this.state.sourceType === "twitter" && this.state.twitId && !prevState.twitId) {
+      window.twttr.widgets.createTweet(
+        this.state.twitId,
+        document.getElementById(`twit-${this.state.twitId}`)
+      );
+    }
   }
 
   _handleEdit() {
@@ -83,8 +91,20 @@ export default class Block extends Component {
   }
 
   _embed(e) {
+    let url = this.state.form.url;
+
+    if (this.state.sourceType === "twitter") {
+      var re = /\/(\d+)/;
+      var matches = url.match(re);
+      var twitId = null;
+      if (matches && matches.length >= 2) {
+        twitId = matches[1];
+      }
+    }
+
     this.setState({
-      url: this.state.form.url
+      url: url,
+      twitId: twitId
     });
   }
 
@@ -114,6 +134,8 @@ export default class Block extends Component {
         return this._renderPlayBuzz();
       case "instagram":
         return this._renderInstagram();
+      case "twitter":
+        return this._renderTwitter();
     }
   }
 
@@ -156,6 +178,14 @@ export default class Block extends Component {
       <div className="md-embed__media">
         <iframe className="md-embed__media__iframe"
           src={this.state.url + "/embed/"}></iframe>
+      </div>
+    );
+  }
+
+  _renderTwitter() {
+    return (
+      <div className="md-embed__media">
+        <div id={`twit-${this.state.twitId}`}></div>
       </div>
     );
   }

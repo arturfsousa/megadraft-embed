@@ -18,7 +18,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: #666;
+    background-color: $color-gray;
     color: white;
     transition: all ease-in-out .20s;
   }
@@ -29,7 +29,7 @@
   }
 
   &--selected {
-    border: 1px dashed #666;
+    border: 1px dashed $color-gray;
   }
 
   &--facebook:before {
