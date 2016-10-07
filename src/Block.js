@@ -8,6 +8,8 @@ import React, {Component} from "react";
 
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 
+import validUrl from "valid-url";
+
 import Button from "components/Button";
 import Icon from "components/Icon";
 
@@ -37,6 +39,7 @@ export default class Block extends Component {
     this.state = {
       url: "",
       sourceType: "facebook",
+      errors: [],
       twitId: null,
       form: {
         url: ""
@@ -68,11 +71,15 @@ export default class Block extends Component {
       }
     }
 
-    if (this.state.sourceType === "twitter" && this.state.twitId && !prevState.twitId) {
-      window.twttr.widgets.createTweet(
-        this.state.twitId,
-        document.getElementById(`twit-${this.state.twitId}`)
-      );
+    if (this.state.sourceType === "twitter") {
+      if (this.state.twitId && prevState.twitId != this.state.twitId) {
+        window.twttr.widgets.createTweet(
+          this.state.twitId,
+          document.getElementById(`twit-${this.state.twitId}`)
+        );
+      }  else if (document.getElementById(`twit-${this.state.twitId}`)) {
+        document.getElementById(`twit-${this.state.twitId}`).innerHTML = "";
+      }
     }
   }
 
@@ -88,25 +95,45 @@ export default class Block extends Component {
   }
 
   _setSourceType(sourceType, e) {
-    this.setState({ sourceType: sourceType });
+    this.setState({ sourceType: sourceType, url: "" });
   }
 
   _embed(e) {
-    let url = this.state.form.url;
+    let data = this._getValidatedData();
 
+    this.setState({
+      url: data.url,
+      twitId: data.twitId
+    });
+  }
+
+  _getValidatedData() {
+    let url = this.state.form.url;
+    let errors = [];
+
+    url = url.trim();
+
+    if (!validUrl.isUri(url)) {
+      errors.push("Invalid URL");
+    }
+
+    let twitId = null;
     if (this.state.sourceType === "twitter") {
       var re = /\/(\d+)/;
       var matches = url.match(re);
-      var twitId = null;
       if (matches && matches.length >= 2) {
         twitId = matches[1];
+      } else {
+        errors.push("Invalid Twitter URL");
       }
     }
 
-    this.setState({
+    this.setState({ errors: errors });
+
+    return {
       url: url,
       twitId: twitId
-    });
+    };
   }
 
   _renderSources() {
@@ -196,9 +223,23 @@ export default class Block extends Component {
   _renderMap() {
     return (
       <div className="md-embed__media">
-        <iframe src="http://www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK&zoom=17"></iframe>
+        <iframe src="http://www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK&zoom=17&key=AIzaSyCQNjrqDS3NHGmQJGHmTH39qWkuTwAZV48"></iframe>
       </div>
     );
+  }
+
+  _renderErrors() {
+    if (this.state.errors.length) {
+      return (
+        <ul className="md-embed-errors">
+        {this.state.errors.map((error, index) => {
+          return (
+            <li key={index}>{error}</li>
+          );
+        })}
+        </ul>
+      );
+    }
   }
 
   render(){
@@ -213,6 +254,7 @@ export default class Block extends Component {
             placeholder="URL"
             value={(this.state.url) ? this.state.url : null}
             onChange={this._onChangeForm.bind(this, "url")} />
+          {this._renderErrors()}
         </BlockData>
 
         <BlockData>
