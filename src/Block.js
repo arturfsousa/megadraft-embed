@@ -35,11 +35,36 @@ export default class Block extends Component {
 
     this.state = {
       url: "",
-      souceType: "facebook",
+      sourceType: "facebook",
       form: {
         url: ""
       }
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.sourceType === "facebook") {
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml: true,
+          version: "v2.8"
+        });
+        window.FB = FB;
+        window.FB.XFBML.parse();
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, "script", "facebook-jssdk"));
+
+      if (window.FB) {
+        window.FB.XFBML.parse();
+      }
+    }
   }
 
   _handleEdit() {
@@ -53,8 +78,8 @@ export default class Block extends Component {
     this.setState({ form: form });
   }
 
-  _setSourceType(souceType, e) {
-    this.setState({ souceType: souceType });
+  _setSourceType(sourceType, e) {
+    this.setState({ sourceType: sourceType });
   }
 
   _embed(e) {
@@ -70,7 +95,7 @@ export default class Block extends Component {
           key={index}
           type={sourceType}
           onClick={this._setSourceType.bind(this, sourceType)}
-          active={sourceType === this.state.souceType} />
+          active={sourceType === this.state.sourceType} />
       );
     });
   }
@@ -80,9 +105,11 @@ export default class Block extends Component {
       return null;
     }
 
-    switch (this.state.souceType) {
+    switch (this.state.sourceType) {
       case "youtube":
         return this._renderYoutube();
+      case "facebook":
+        return this._renderFacebook();
     }
   }
 
@@ -91,6 +118,17 @@ export default class Block extends Component {
       <div className="md-embed__media">
         <iframe className="md-embed__media__iframe"
           src={this.state.url}></iframe>
+      </div>
+    );
+  }
+
+  _renderFacebook() {
+    return (
+      <div className="md-embed__media">
+        <div
+          className="fb-post"
+          data-href={this.state.url}
+          data-width="500"></div>
       </div>
     );
   }
