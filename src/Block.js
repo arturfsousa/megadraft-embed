@@ -112,6 +112,8 @@ export default class Block extends Component {
         return this._renderFacebook();
       case "playbuzz":
         return this._renderPlayBuzz();
+      case "instagram":
+        return this._renderInstagram();
     }
   }
 
@@ -145,6 +147,15 @@ export default class Block extends Component {
           data-comments="false"
           data-shares="false">
         </div>
+      </div>
+    );
+  }
+
+  _renderInstagram() {
+    return (
+      <div className="md-embed__media">
+        <iframe className="md-embed__media__iframe"
+          src={this.state.url + "/embed/"}></iframe>
       </div>
     );
   }
