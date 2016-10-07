@@ -110,6 +110,8 @@ export default class Block extends Component {
         return this._renderYoutube();
       case "facebook":
         return this._renderFacebook();
+      case "playbuzz":
+        return this._renderPlayBuzz();
     }
   }
 
@@ -129,6 +131,20 @@ export default class Block extends Component {
           className="fb-post"
           data-href={this.state.url}
           data-width="500"></div>
+      </div>
+    );
+  }
+
+  _renderPlayBuzz() {
+    return (
+      <div className="md-embed__media">
+        <div className="pb_feed"
+          data-game={this.state.url}
+          data-recommend="false"
+          data-game-info="false"
+          data-comments="false"
+          data-shares="false">
+        </div>
       </div>
     );
   }
