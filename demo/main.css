@@ -88,6 +88,9 @@
 .megadraft-editor .block__content--embed {
   line-height: 0; }
 
+.megadraft-editor .block__input {
+  outline: none; }
+
 body {
   margin: 0; }
 

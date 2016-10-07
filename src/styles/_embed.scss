@@ -1,3 +1,9 @@
-.megadraft-editor .block__content--embed {
-  line-height: 0;
+.megadraft-editor {
+  .block__content--embed {
+    line-height: 0;
+  }
+
+  .block__input {
+    outline: none;
+  }
 }
