@@ -1,7 +1,7 @@
 {
   "name": "megadraft-embed",
   "version": "0.0.1",
-  "description": "embed",
+  "description": "Megadraft embed plugin",
   "main": "lib/plugin.js",
   "dependencies": {
     "megadraft": "^0.2.0",
