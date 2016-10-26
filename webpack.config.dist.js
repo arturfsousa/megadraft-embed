@@ -36,5 +36,12 @@ module.exports = {
         loader: "json"
       }
     ]
+  },
+  resolve: {
+    modulesDirectories: [
+      "node_modules",
+      "src"
+    ],
+    extensions: ["", ".js", ".jsx"]
   }
 };
