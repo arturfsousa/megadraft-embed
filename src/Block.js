@@ -9,9 +9,11 @@ import React, {Component} from "react";
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 
 import validUrl from "valid-url";
+import icons from "icons";
 
 import Button from "components/Button";
 import Icon from "components/Icon";
+
 
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
@@ -31,12 +33,12 @@ export default class Block extends Component {
     ];
 
     this.sources = [
-      "facebook",
-      "instagram",
-      "twitter",
-      "youtube",
-      "playbuzz",
-      "map"
+      {"name": "facebook", "icon": icons.FacebookIcon},
+      {"name": "instagram", "icon": icons.InstagramIcon},
+      {"name": "twitter", "icon": icons.TwitterIcon},
+      {"name": "youtube", "icon": icons.YoutubeIcon},
+      {"name": "playbuzz", "icon": icons.PinterestIcon},
+      {"name": "map", "icon": icons.MapsIcon}
     ];
 
     this.state = {
@@ -157,13 +159,14 @@ export default class Block extends Component {
   }
 
   _renderSources() {
-    return this.sources.map((sourceType, index) => {
-      return (
-        <Icon
-          key={index}
-          type={sourceType}
-          onClick={this._setSourceType.bind(this, sourceType)}
-          active={sourceType === this.state.sourceType} />
+    return this.sources.map((source, index) => {
+        return (
+          <Icon
+            key={index}
+            type={source.name}
+            onClick={this._setSourceType.bind(this, source.name)}
+            icon={source.icon}
+            active={source.name === this.state.sourceType} />
       );
     });
   }

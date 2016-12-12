@@ -58,3 +58,11 @@ npm publish
 
 The sample plugin uses the extension icon from https://design.google.com/icons/
 under [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
+Social Medias:
+
+* Facebook, Maps, Youtube, Twitter: Icons made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) is licensed by [CC BY 3.0](http://creativecommons.org/licenses/by/3.0)
+
+* Instagram: Icons made by [GraphicsBay](http://www.flaticon.com/authors/graphicsbay) is licensed by [CC BY 3.0](http://creativecommons.org/licenses/by/3.0)
+
+* Pinterest: Icons made by [Freepik](http://www.freepik.com) is licensed by [CC BY 3.0](http://creativecommons.org/licenses/by/3.0)
