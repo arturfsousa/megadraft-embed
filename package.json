@@ -4,9 +4,9 @@
   "description": "Megadraft embed plugin",
   "main": "lib/plugin.js",
   "dependencies": {
-    "megadraft": "^0.2.0",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "megadraft": "^0.4.7",
+    "react": "15.2.1",
+    "react-dom": "15.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
@@ -30,7 +30,7 @@
     "gulp-util": "^3.0.7",
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
-    "react-addons-test-utils": "^15.1.0",
+    "react-addons-test-utils": "15.2.1",
     "rimraf": "^2.5.2",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
