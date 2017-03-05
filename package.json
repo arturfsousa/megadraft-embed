@@ -52,10 +52,7 @@
     "lint:watch": "esw -w src tests",
     "watch": "babel -d lib/ src/ --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/arturfelipe/megadraft-embed.git"
-  },
+  "repository": "https://github.com/arturfelipe/megadraft-embed.git",
   "files": [
     "dist",
     "lib"
@@ -66,11 +63,7 @@
     "react",
     "draftjs"
   ],
-  "author": {
-    "author": "Artur Sousa",
-    "email": "arturfelipe.sousa@gmail.com",
-    "url": "arturfelipe.sousa@gmail.com"
-  },
+  "author": "Artur Felipe Sousa <arturfelipe.sousa@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/arturfelipe/megadraft-embed.git/issues"
