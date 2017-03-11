@@ -1,5 +1,16 @@
 # megadraft-embed - Megadraft Plugin
 
+Megradraft plugin to embed media URLs.
+
+## Supported Medias
+
+We support the following medias:
+
+* __Twitter__: Users should provide a valid `twitter` post URL like:
+`https://twitter.com/RedeGlobo/status/840532910696361984`.
+
+If you need some other media, check the section: `Add new sources` above.
+
 ## Usage
 
 Include the plugin in the `plugins` prop of your `Megadraft` instance.
@@ -21,6 +32,10 @@ class Example extends React.Component {
 
 ReactDOM.render(<Example />, document.getElementById("container"));
 ```
+
+## Add new sources
+
+--
 
 ## Contributing
 
