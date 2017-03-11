@@ -1,4 +1,4 @@
-# embed - Megadraft Plugin
+# megadraft-embed - Megadraft Plugin
 
 ## Usage
 
@@ -52,7 +52,6 @@ before publishing the package.
 ```
 npm publish
 ```
-
 
 ## Third Party
 
