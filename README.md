@@ -33,10 +33,6 @@ class Example extends React.Component {
 ReactDOM.render(<Example />, document.getElementById("container"));
 ```
 
-## Add new sources
-
---
-
 ## Contributing
 
 Install, run, test.
@@ -58,6 +54,10 @@ watch feature:
 ```
 make watch_unit
 ```
+
+## Add new sources
+
+--
 
 ## Releasing
 
