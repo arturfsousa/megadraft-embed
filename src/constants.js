@@ -5,5 +5,10 @@
  */
 
 export default {
-  PLUGIN_TYPE: "megadraft-embed"
+  PLUGIN_TYPE: "megadraft-embed",
+  SUPPORTED_SOURCES: {
+    "twitter": {
+      "pattern": /^https:\/\/twitter\.com\/.*\/status\/(\d+).*/
+    }
+  }
 };
