@@ -24,7 +24,7 @@ export default class Block extends Component {
     ];
 
     this.state = {
-      url: ""
+      url: ''
     };
   }
 
