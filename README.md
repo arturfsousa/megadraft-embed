@@ -1,4 +1,5 @@
-# megadraft-embed - Megadraft Plugin
+# megadraft-embed - Megadraft Plugin [![Build Status](https://travis-ci.org/arturfelipe/megadraft-embed.svg?branch=master)](https://www.npmjs.com/package/megadraft-embed)
+
 
 Megradraft plugin to embed media URLs.
 
