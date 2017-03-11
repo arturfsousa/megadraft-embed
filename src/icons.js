@@ -12,7 +12,11 @@ import TwitterIcon from "./icons/twitter";
 import YoutubeIcon from "./icons/youtube";
 
 const icons = {
-  FacebookIcon, InstagramIcon, MapsIcon, PinterestIcon, TwitterIcon,
+  FacebookIcon,
+  InstagramIcon,
+  MapsIcon,
+  PinterestIcon,
+  TwitterIcon,
   YoutubeIcon
 };
 

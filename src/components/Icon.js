@@ -8,7 +8,7 @@ export default class Icon extends Component {
     super(props);
   }
 
-    render() {
+  render() {
     const SvgIcon = this.props.icon;
     let cssClasses = classNames(
       "md-embed-icon",

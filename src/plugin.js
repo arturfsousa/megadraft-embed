@@ -4,7 +4,7 @@
  * License: MIT
  */
 
-import {MegadraftIcons} from "megadraft";
+// import {MegadraftIcons} from "megadraft";
 
 import Button from "./Button";
 import Block from "./Block";
