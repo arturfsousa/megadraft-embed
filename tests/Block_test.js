@@ -6,12 +6,13 @@
 
 import React from "react";
 import TestUtils from "react-addons-test-utils";
-// import chai from "chai";
+import chai from "chai";
 import sinon from "sinon";
 
 import Block from "../src/Block";
 
-// let expect = chai.expect;
+let expect = chai.expect;
+
 
 describe("Block", function () {
   beforeEach(function () {
@@ -19,29 +20,37 @@ describe("Block", function () {
       url: "https://twitter.com/RedeGlobo/status/840532910696361984"
     };
 
-    this.setReadOnly = sinon.spy();
-    this.updateEntity = sinon.spy();
+    this.input = {
+      url: "https://twitter.com/RedeGlobo/status/840927628819288064"
+    };
+
+    this.updateData = sinon.spy();
     this.remove = sinon.spy();
     this.plugin = sinon.spy();
 
-    this.wrapper = TestUtils.renderIntoDocument(
+    this.block = TestUtils.renderIntoDocument(
       <Block container={this} blockProps={this} data={this.data} />
     );
 
-    this.caption = TestUtils.scryRenderedDOMComponentsWithTag(this.wrapper, "input")[0];
+    this.inputElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "input")[0];
+    this.buttonElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "button")[0];
   });
 
-  // it("renders caption from data", function () {
-  //   expect(this.caption.value).to.be.equal(this.data.caption);
-  // });
-  //
-  // it("updates entity on caption change", function () {
-  //   this.caption.value = "new caption";
-  //   TestUtils.Simulate.change(this.caption);
-  //   expect(this.updateEntity.calledWith({caption: "new caption"})).to.be.true;
-  // });
-  //
-  // it("your tests here...", function () {
-  //   expect(true).to.be.false;
-  // });
+  it("should load data from props", function () {
+    expect(this.inputElement.value).to.be.equal(this.data.url);
+  });
+
+  it("should update data from input without changing the main state value", function () {
+    this.inputElement.value = this.input.url;
+    TestUtils.Simulate.change(this.inputElement);
+    expect(this.block.state.input.url).to.be.equal(this.input.url);
+  });
+
+  it("should update main state on button click", function () {
+    this.inputElement.value = this.input.url;
+    TestUtils.Simulate.change(this.inputElement);
+    TestUtils.Simulate.click(this.buttonElement);
+    expect(this.block.state.url).to.be.equal(this.input.url);
+    expect(this.updateData.calledWith({url: this.input.url})).to.be.true;
+  });
 });
