@@ -1,4 +1,5 @@
-# megadraft-embed - Megadraft Plugin [![Build Status](https://travis-ci.org/arturfelipe/megadraft-embed.svg?branch=master)](https://travis-ci.org/arturfelipe/megadraft-embed)
+# megadraft-embed - Megadraft Plugin [![Build Status](https://travis-ci.org/arturfelipe/megadraft-embed.svg?branch=master)](https://travis-ci.org/arturfelipe/megadraft-embed) [![codecov](https://codecov.io/gh/arturfelipe/megadraft-embed/branch/master/graph/badge.svg)](https://codecov.io/gh/arturfelipe/megadraft-embed)
+
 
 
 Megradraft plugin to embed media URLs.
