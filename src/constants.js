@@ -4,11 +4,16 @@
  * License: MIT
  */
 
+
 export default {
   PLUGIN_TYPE: "megadraft-embed",
   SUPPORTED_SOURCES: {
     "twitter": {
-      "pattern": /^https:\/\/twitter\.com\/.*\/status\/(\d+).*/
+      "pattern": /^https:\/\/twitter\.com\/.*\/status\/(\d+).*/,
+      "fetch": {
+        "type": "oembed",
+        "endPoint": "https://publish.twitter.com/oembed?url="
+      }
     }
   }
 };

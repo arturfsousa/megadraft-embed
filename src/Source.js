@@ -6,6 +6,7 @@
  */
 
 import validUrl from "valid-url";
+import jsonp from "jsonp";
 import constants from "./constants";
 
 
@@ -42,7 +43,7 @@ class Source {
         return;
       }
     }
-    throw "Invalid source";
+    throw "Invalid media source";
   }
 
   isValid() {
@@ -57,6 +58,25 @@ class Source {
     } catch (e) {
       return false;
     }
+  }
+
+  load(callback) {
+    if (!this.isValid()) {
+      callback(true, null);
+      return;
+    }
+    switch (this.config.fetch.type) {
+      case "oembed":
+        this.loadOembed(callback);
+        break;
+      default:
+        callback(null, { url: this.url });
+    }
+  }
+
+  loadOembed(callback) {
+    let endPointUrl = this.config.fetch.endPoint + this.url;
+    jsonp(endPointUrl, callback);
   }
 }
 

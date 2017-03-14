@@ -97,4 +97,12 @@ describe("Block", function () {
     expect(errors.children).to.have.lengthOf(1);
     expect(errors.children[0].textContent).to.be.equal("Invalid media source");
   });
+
+  it("should clean the main state for invalid sources", function () {
+    const url = "https://some-invalid-url";
+    this.inputElement.value = url;
+    TestUtils.Simulate.change(this.inputElement);
+    TestUtils.Simulate.click(this.buttonElement);
+    expect(this.block.state.url).to.be.empty;
+  });
 });

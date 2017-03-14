@@ -4,6 +4,7 @@
   "description": "Megadraft embed plugin",
   "main": "lib/plugin.js",
   "dependencies": {
+    "jsonp": "^0.2.1",
     "megadraft": "^0.4.7",
     "react": "15.2.1",
     "react-dom": "15.2.1"

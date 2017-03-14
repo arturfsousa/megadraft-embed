@@ -46,23 +46,26 @@ export default class Block extends Component {
 
   embed(e) {
     let data = {
-      url: this.state.input.url,
+      url: this.state.url,
       input: {
         url: this.state.input.url,
         errors: []
       }
     };
 
-    const source = new Source(data.url, ["twitter"]);
-    if (!source.isValid()) {
-      data.url = "";
-      data.input.errors = [ "Invalid media source" ];
-      this.setState(data);
-      return;
-    }
+    const source = new Source(data.input.url, ["twitter"]);
+    source.load((err, media) => {
+      if (err) {
+        data.url = "";
+        data.input.errors = [ "Invalid media source" ];
+        this.setState(data);
+        return;
+      }
 
-    this.setState(data);
-    this.props.container.updateData(data);
+      data.url = this.state.input.url;
+      this.setState(data);
+      this.props.container.updateData(data);
+    });
   }
 
   render(){
