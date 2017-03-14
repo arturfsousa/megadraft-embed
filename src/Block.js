@@ -7,7 +7,9 @@
 import React, {Component} from "react";
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
+
 import Button from "./components/Button";
+import Media from "./media";
 
 
 export default class Block extends Component {
@@ -16,7 +18,6 @@ export default class Block extends Component {
 
     this._onChangeInput = ::this._onChangeInput;
     this.embed = ::this.embed;
-    this.renderEmbed = ::this.renderEmbed;
 
     this.actions = [
       {
@@ -48,24 +49,11 @@ export default class Block extends Component {
     this.props.container.updateData(data);
   }
 
-  renderEmbed() {
-    if (!this.state.url) {
-      return;
-    }
-
-    return (
-      <iframe
-        src={this.state.url}
-        width="560"
-        height="315"></iframe>
-    );
-  }
-
   render(){
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          {this.renderEmbed()}
+          <Media url={this.state.url} />
         </BlockContent>
 
         <BlockData>

@@ -35,13 +35,6 @@ describe("Block", function () {
 
     this.inputElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "input")[0];
     this.buttonElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "button")[0];
-    // this.button = TestUtils.renderIntoDocument(
-    //   <Button
-    //     label={this.data}
-    //     container={this}
-    //     blockProps={this}
-    //   />
-    // );
   });
 
   it("should have a delete action", function () {
@@ -58,8 +51,7 @@ describe("Block", function () {
   });
 
   it("should have a button with an Embed label", function () {
-    const button = TestUtils.findRenderedDOMComponentWithClass(this.block, "md-embed-button");
-    expect(button.textContent).to.be.equal("Embed");
+    expect(this.buttonElement.textContent).to.be.equal("Embed");
   });
 
   it("should update data from input without changing the main state value", function () {
@@ -74,5 +66,13 @@ describe("Block", function () {
     TestUtils.Simulate.click(this.buttonElement);
     expect(this.block.state.url).to.be.equal(this.input.url);
     expect(this.updateData.calledWith({url: this.input.url})).to.be.true;
+  });
+
+  it("should render a media component", function () {
+    this.inputElement.value = this.input.url;
+    TestUtils.Simulate.change(this.inputElement);
+    TestUtils.Simulate.click(this.buttonElement);
+    let media = TestUtils.findRenderedDOMComponentWithClass(this.block, "media");
+    expect(media.src).to.be.equal(this.input.url);
   });
 });
