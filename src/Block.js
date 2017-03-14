@@ -5,11 +5,9 @@
  */
 
 import React, {Component} from "react";
-
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
-
-
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
+import Button from "./components/Button";
 
 
 export default class Block extends Component {
@@ -43,12 +41,11 @@ export default class Block extends Component {
   }
 
   embed(e) {
-    this.setState({
+    let data = {
       url: this.state.input.url
-    });
-    this.props.container.updateData({
-      url: this.state.input.url
-    });
+    };
+    this.setState(data);
+    this.props.container.updateData(data);
   }
 
   renderEmbed() {
@@ -79,7 +76,9 @@ export default class Block extends Component {
         </BlockData>
 
         <BlockData>
-          <button onClick={this.embed.bind(this)}>Embed</button>
+          <Button
+            label='Embed'
+            onClick={this.embed.bind(this)} />
         </BlockData>
       </CommonBlock>
     );

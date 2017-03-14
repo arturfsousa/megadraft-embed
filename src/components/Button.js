@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016, Artur Sousa <arturfelipe.sousa@gmail.com>
+ *
+ * License: MIT
+ */
+
 import React, {Component} from "react";
 
 export default class Button extends Component {

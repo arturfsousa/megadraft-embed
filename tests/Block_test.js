@@ -35,6 +35,13 @@ describe("Block", function () {
 
     this.inputElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "input")[0];
     this.buttonElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "button")[0];
+    // this.button = TestUtils.renderIntoDocument(
+    //   <Button
+    //     label={this.data}
+    //     container={this}
+    //     blockProps={this}
+    //   />
+    // );
   });
 
   it("should have a delete action", function () {
@@ -48,6 +55,11 @@ describe("Block", function () {
 
   it("should load data from props", function () {
     expect(this.inputElement.value).to.be.equal(this.data.url);
+  });
+
+  it("should have a button with an Embed label", function () {
+    const button = TestUtils.findRenderedDOMComponentWithClass(this.block, "md-embed-button");
+    expect(button.textContent).to.be.equal("Embed");
   });
 
   it("should update data from input without changing the main state value", function () {

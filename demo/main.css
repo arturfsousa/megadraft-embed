@@ -14,7 +14,7 @@
   margin-top: 0.5rem;
   padding: 0;
   color: #e83f26;
-  font-family: "opensans-bold-webfont";
+  font-family: "Open Sans";
   font-size: 0.875rem;
   letter-spacing: -0.01562rem;
   line-height: 1rem;
@@ -31,6 +31,8 @@
   cursor: pointer;
   outline: none;
   text-align: center;
+  font-family: "Open Sans";
+  font-weight: bold;
   -webkit-font-smoothing: antialiased; }
   .md-embed-button + .md-embed-button {
     margin-left: 10px; }
@@ -43,13 +45,11 @@
     .md-embed-button--blue:active {
       background-color: #3192e7; }
   .md-embed-button--small {
-    font-family: "opensans-bold-webfont";
     font-size: 0.75rem;
     height: 33px;
     line-height: 1rem; }
 
 .md-embed-icon {
-  font-family: 'embed' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;

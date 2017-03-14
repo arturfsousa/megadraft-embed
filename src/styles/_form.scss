@@ -4,7 +4,7 @@
   margin-top: 0.5rem;
   padding: 0;
   color: #e83f26;
-  font-family: $font-default-bold;
+  font-family: $font-default;
   font-size: 0.875rem;
   letter-spacing: -0.01562rem;
   line-height: 1rem;
@@ -21,6 +21,8 @@
   cursor: pointer;
   outline: none;
   text-align: center;
+  font-family: $font-default;
+  font-weight: bold;
   -webkit-font-smoothing: antialiased;
 
   + .md-embed-button {
@@ -42,7 +44,6 @@
   }
 
   &--small {
-    font-family: "opensans-bold-webfont";
     font-size: 0.75rem;
     height: 33px;
     line-height: 1rem;
