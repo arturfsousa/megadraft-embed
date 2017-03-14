@@ -20,11 +20,6 @@ export default class Block extends Component {
 
     this.actions = [
       {
-        "key": "edit",
-        "icon": MegadraftIcons.EditIcon,
-        "action": this._handleEdit
-      },
-      {
         "key": "delete",
         "icon": MegadraftIcons.DeleteIcon,
         "action": this.props.container.remove

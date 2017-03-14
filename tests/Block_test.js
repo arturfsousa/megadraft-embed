@@ -36,6 +36,12 @@ describe("Block", function () {
     this.buttonElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "button")[0];
   });
 
+  it("should have a delete action", function () {
+    expect(this.block.actions).to.have.lengthOf(1);
+    expect(this.block.actions[0].key).to.be.equal("delete");
+    expect(this.block.actions[0].action).to.be.equal(this.block.props.container.remove);
+  });
+
   it("should load data from props", function () {
     expect(this.inputElement.value).to.be.equal(this.data.url);
   });
