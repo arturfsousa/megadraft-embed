@@ -8,6 +8,7 @@ import React from "react";
 import TestUtils from "react-addons-test-utils";
 import chai from "chai";
 import sinon from "sinon";
+import {MegadraftIcons} from "megadraft";
 
 import Block from "../src/Block";
 
@@ -38,8 +39,11 @@ describe("Block", function () {
 
   it("should have a delete action", function () {
     expect(this.block.actions).to.have.lengthOf(1);
-    expect(this.block.actions[0].key).to.be.equal("delete");
-    expect(this.block.actions[0].action).to.be.equal(this.block.props.container.remove);
+    expect(this.block.actions).to.deep.equal([{
+      "key": "delete",
+      "icon": MegadraftIcons.DeleteIcon,
+      "action": this.block.props.container.remove
+    }]);
   });
 
   it("should load data from props", function () {

@@ -16,7 +16,9 @@ export default class Block extends Component {
   constructor(props) {
     super(props);
 
-    this._handleEdit = ::this._handleEdit;
+    this._onChangeInput = ::this._onChangeInput;
+    this.embed = ::this.embed;
+    this.renderEmbed = ::this.renderEmbed;
 
     this.actions = [
       {
@@ -34,17 +36,13 @@ export default class Block extends Component {
     };
   }
 
-  _handleEdit() {
-    alert(JSON.stringify(this.state, null, 4));
-  }
-
   _onChangeInput(field, e) {
     let input = this.state.input;
     input[field] = e.target.value;
     this.setState({ input: input });
   }
 
-  _embed(e) {
+  embed(e) {
     this.setState({
       url: this.state.input.url
     });
@@ -53,7 +51,7 @@ export default class Block extends Component {
     });
   }
 
-  _renderEmbed() {
+  renderEmbed() {
     if (!this.state.url) {
       return;
     }
@@ -70,7 +68,7 @@ export default class Block extends Component {
     return (
       <CommonBlock {...this.props} actions={this.actions}>
         <BlockContent>
-          {this._renderEmbed()}
+          {this.renderEmbed()}
         </BlockContent>
 
         <BlockData>
@@ -81,7 +79,7 @@ export default class Block extends Component {
         </BlockData>
 
         <BlockData>
-          <button onClick={this._embed.bind(this)}>Embed</button>
+          <button onClick={this.embed.bind(this)}>Embed</button>
         </BlockData>
       </CommonBlock>
     );
