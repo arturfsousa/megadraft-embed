@@ -35,5 +35,6 @@ describe("Media", function () {
       <Media />
     );
     expect(media.textContent).to.be.empty;
+    expect(media.children).to.be.empty;
   });
 });

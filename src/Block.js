@@ -10,6 +10,8 @@ const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
 import Button from "./components/Button";
 import Media from "./media";
+import Source from "./Source";
+import ErrorList from "./ErrorList";
 
 
 export default class Block extends Component {
@@ -30,7 +32,8 @@ export default class Block extends Component {
     this.state = {
       url: (props.data.url) ? props.data.url : "",
       input: {
-        url: (props.data.url) ? props.data.url : ""
+        url: (props.data.url) ? props.data.url : "",
+        errors: []
       }
     };
   }
@@ -43,8 +46,21 @@ export default class Block extends Component {
 
   embed(e) {
     let data = {
-      url: this.state.input.url
+      url: this.state.input.url,
+      input: {
+        url: this.state.input.url,
+        errors: []
+      }
     };
+
+    const source = new Source(data.url, ["twitter"]);
+    if (!source.isValid()) {
+      data.url = "";
+      data.input.errors = [ "Invalid media source" ];
+      this.setState(data);
+      return;
+    }
+
     this.setState(data);
     this.props.container.updateData(data);
   }
@@ -61,6 +77,7 @@ export default class Block extends Component {
             placeholder='URL'
             value={(this.state.url) ? this.state.url : null}
             onChange={this._onChangeInput.bind(this, "url")} />
+          <ErrorList errors={this.state.input.errors} />
         </BlockData>
 
         <BlockData>

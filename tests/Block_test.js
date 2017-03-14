@@ -65,7 +65,13 @@ describe("Block", function () {
     TestUtils.Simulate.change(this.inputElement);
     TestUtils.Simulate.click(this.buttonElement);
     expect(this.block.state.url).to.be.equal(this.input.url);
-    expect(this.updateData.calledWith({url: this.input.url})).to.be.true;
+    expect(this.updateData.calledWith({
+      url: this.input.url,
+      input: {
+        url: this.input.url,
+        errors: []
+      }
+    })).to.be.true;
   });
 
   it("should render a media component", function () {
@@ -74,5 +80,21 @@ describe("Block", function () {
     TestUtils.Simulate.click(this.buttonElement);
     let media = TestUtils.findRenderedDOMComponentWithClass(this.block, "media");
     expect(media.src).to.be.equal(this.input.url);
+  });
+
+  it("should have no errors by default", function () {
+    let errors = TestUtils.scryRenderedDOMComponentsWithClass(this.block, "md-embed-errors");
+    expect(errors).to.be.empty;
+  });
+
+  it("should render errors for invalid sources", function () {
+    const url = "https://some-invalid-url";
+    this.inputElement.value = url;
+    TestUtils.Simulate.change(this.inputElement);
+    TestUtils.Simulate.click(this.buttonElement);
+
+    let errors = TestUtils.findRenderedDOMComponentWithClass(this.block, "md-embed-errors");
+    expect(errors.children).to.have.lengthOf(1);
+    expect(errors.children[0].textContent).to.be.equal("Invalid media source");
   });
 });
