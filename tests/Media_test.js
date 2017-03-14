@@ -26,15 +26,15 @@ describe("Media", function () {
     this.iframe = TestUtils.findRenderedDOMComponentWithClass(this.media, "media");
   });
 
-  it("should have a URL src from props", function () {
-    expect(this.iframe.src).to.equal(this.data.url);
-  });
-
   it("should render nothing", function () {
     const media = TestUtils.renderIntoDocument(
       <Media />
     );
     expect(media.textContent).to.be.empty;
     expect(media.children).to.be.empty;
+  });
+
+  it("should have a URL src from props", function () {
+    expect(this.iframe.src).to.equal(this.data.url);
   });
 });
