@@ -9,7 +9,6 @@ import {MegadraftPlugin, MegadraftIcons} from "megadraft";
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
 import Button from "./components/Button";
-import Media from "./media";
 import Source from "./Source";
 import ErrorList from "./ErrorList";
 
