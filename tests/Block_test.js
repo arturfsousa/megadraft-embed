@@ -11,6 +11,7 @@ import sinon from "sinon";
 import {MegadraftIcons} from "megadraft";
 
 import Block from "../src/Block";
+import Source from "../src/Source";
 
 let expect = chai.expect;
 
@@ -28,6 +29,9 @@ describe("Block", function () {
     this.updateData = sinon.spy();
     this.remove = sinon.spy();
     this.plugin = sinon.spy();
+    this.loadOembed = sinon.stub(Source.prototype, 'loadOembed').yields(null, {
+      "some": "data"
+    });
 
     this.block = TestUtils.renderIntoDocument(
       <Block container={this} blockProps={this} data={this.data} />
@@ -35,6 +39,10 @@ describe("Block", function () {
 
     this.inputElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "input")[0];
     this.buttonElement = TestUtils.scryRenderedDOMComponentsWithTag(this.block, "button")[0];
+  });
+
+  afterEach(function () {
+    this.loadOembed.restore();
   });
 
   it("should have a delete action", function () {
@@ -72,6 +80,7 @@ describe("Block", function () {
         errors: []
       }
     })).to.be.true;
+    expect(this.loadOembed.called).to.be.true;
   });
 
   it("should render a media component", function () {
