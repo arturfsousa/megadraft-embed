@@ -63,7 +63,7 @@ export default class Block extends Component {
         return;
       }
 
-      let bodyData = this.getBodyData(media.html);
+      // let bodyData = this.getBodyData(media.html);
 
       data.url = this.state.input.url;
       this.setState(data);
@@ -73,7 +73,7 @@ export default class Block extends Component {
 
   getBodyData(html) {
     let bodyData = convertFromHTML(html);
-    return convertToRaw(ContentState.createFromBlockArray(bodyData))
+    return convertToRaw(ContentState.createFromBlockArray(bodyData));
   }
 
   render(){
