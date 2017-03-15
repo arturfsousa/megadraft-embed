@@ -6,6 +6,7 @@
 
 import React, {Component} from "react";
 import {MegadraftPlugin, MegadraftIcons} from "megadraft";
+import {convertFromHTML, ContentState, convertToRaw} from "draft-js";
 const {BlockContent, BlockData, BlockInput, CommonBlock} = MegadraftPlugin;
 
 import Button from "./components/Button";
@@ -62,10 +63,17 @@ export default class Block extends Component {
         return;
       }
 
+      let bodyData = this.getBodyData(media.html);
+
       data.url = this.state.input.url;
       this.setState(data);
       this.props.container.updateData(data);
     });
+  }
+
+  getBodyData(html) {
+    let bodyData = convertFromHTML(html);
+    return convertToRaw(ContentState.createFromBlockArray(bodyData))
   }
 
   render(){
