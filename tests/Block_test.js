@@ -29,7 +29,7 @@ describe("Block", function () {
     this.updateData = sinon.spy();
     this.remove = sinon.spy();
     this.plugin = sinon.spy();
-    this.loadOembed = sinon.stub(Source.prototype, 'loadOembed').yields(null, {
+    this.loadOembed = sinon.stub(Source.prototype, "loadOembed").yields(null, {
       "some": "data"
     });
 
